@@ -18,6 +18,9 @@ def create_item(item_id: int, item: Item):
         raise HTTPException(status_code=400, detail="Item already exists")
     database[item_id] = item.dict()
     return {"message": "Item created", "item": database[item_id]}
+@app.get("/")
+def home():
+    return {"message": "Welcome to my FastAPI app!"}
 
 # Read Item
 @app.get("/items/{item_id}")
